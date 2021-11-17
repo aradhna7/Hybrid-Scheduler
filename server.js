@@ -11,9 +11,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/user', require('./routes/api/user'));
-app.use('/api/admin', require('./routes/api/admin'));
-app.use('/api/products', require('./routes/api/product'));
+app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/slot', require('./routes/slotRoutes'));
 
 //SERVE STATIC ASSETS IN PRODUCTION
 if (process.env.NODE_ENV === 'production') {
