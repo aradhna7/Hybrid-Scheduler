@@ -24,12 +24,12 @@ function App() {
         <IndexNavbar />
         <Switch>
           <Route exact path='/' component={Index} />
-          <Route exact path='/login' component={Signin} />
-          <Route exact path='/register' component={Register} />
           <Route exact path='/calender' component={Calender} />
           <Route exact path='/booking/:date' component={Booking} />
           <Route exact path='/setnumslots' component={NumOfSlotSetting} />
           <Route exact path='/getnumslots' component={GetDetailsOfSlot} />
+          <Route exact path='/login' component={Signin} />
+          <Route exact path='/register' component={Register} />
           <Redirect from='/' to='/' />
         </Switch>
       </BrowserRouter>
