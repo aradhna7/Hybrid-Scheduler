@@ -8,7 +8,6 @@ import 'assets/css/nucleo-icons.css';
 import 'assets/scss/blk-design-system-react.scss?v=1.2.0';
 import 'assets/demo/demo.css';
 
-import Index from 'views/Index.js';
 import Signin from './components/Signin';
 import IndexNavbar from 'components/Navbars/IndexNavbar';
 import Register from './components/Register';
@@ -16,6 +15,7 @@ import Calender from './components/Calender';
 import Booking from './components/Booking';
 import NumOfSlotSetting from 'components/NumOfSlotSetting';
 import GetDetailsOfSlot from 'components/GetDetailsOfSlot';
+import Footer from 'components/Footer/Footer';
 
 function App() {
   return (
@@ -32,6 +32,7 @@ function App() {
           <Route exact path='/register' component={Register} />
           <Redirect from='/' to='/' />
         </Switch>
+        <Footer />
       </BrowserRouter>
     </Provider>
   );
