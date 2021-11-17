@@ -16,6 +16,7 @@ import Booking from './components/Booking';
 import NumOfSlotSetting from 'components/NumOfSlotSetting';
 import GetDetailsOfSlot from 'components/GetDetailsOfSlot';
 import Footer from 'components/Footer/Footer';
+import Index from 'views/Index';
 
 function App() {
   return (
