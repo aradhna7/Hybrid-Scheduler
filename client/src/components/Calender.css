@@ -1,0 +1,44 @@
+.md-calendar-booking .mbsc-calendar-text {
+    text-align: center;
+}
+
+.md-calendar-booking .booking-datetime .mbsc-datepicker-tab-calendar {
+    flex: 1 1 0;
+    min-width: 300px;
+}
+
+.md-calendar-booking .mbsc-timegrid-item {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.md-calendar-booking .mbsc-timegrid-container {
+    top: 30px;
+}
+
+.shadow-box-example {
+    height: 120px;
+    width: 100%;
+    background-color: #64b5f6;
+  }
+
+  #example1 {
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px 8px 10px #888888;
+  }
+  
+.react-date-picker *{
+    background-color: #ffffff;
+}
+
+.react-date-picker__inputGroup__divider{
+    color: black;
+}
+
+.numberCircle {
+    border-radius: 50%;
+
+    color: #ffffff;
+    text-align: center;
+}
