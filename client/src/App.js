@@ -22,6 +22,7 @@ import NumOfSlotSetting from 'components/NumOfSlotSetting';
 import GetDetailsOfSlot from 'components/GetDetailsOfSlot';
 import Footer from 'components/Footer/Footer';
 import Index from 'views/Index';
+import MySlots from 'components/MySlots';
 
 function App() {
   return (
@@ -36,9 +37,9 @@ function App() {
           <Route exact path='/getnumslots' component={GetDetailsOfSlot} />
           <Route exact path='/login' component={Signin} />
           <Route exact path='/register' component={Register} />
+          <Route exact path='/myslots' component={MySlots} />
           {/* <Redirect from='/' to='/' /> */}
         </Switch>
-        <Footer />
       </Router>
     </Provider>
   );

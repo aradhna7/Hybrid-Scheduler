@@ -11,6 +11,9 @@ import {
   NUM_OF_SLOT_DETAILS_FAIL,
   NUM_OF_SLOT_DETAILS_REQUEST,
   NUM_OF_SLOT_DETAILS_SUCCESS,
+  GET_MY_SLOT_FAIL,
+  GET_MY_SLOT_REQUEST,
+  GET_MY_SLOT_SUCCESS,
 } from '../constants';
 
 export const slotCreate = (state = {}, action) => {
@@ -110,6 +113,27 @@ export const updateSlotByDate = (state = {}, action) => {
         loading: false,
       };
     case NUM_OF_SLOT_DETAILS_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const mySlot = (state = { slots: [] }, action) => {
+  switch (action.type) {
+    case GET_MY_SLOT_REQUEST:
+      return {
+        loading: true,
+      };
+    case GET_MY_SLOT_SUCCESS:
+      return {
+        slots: action.payload,
+        loading: false,
+      };
+    case GET_MY_SLOT_FAIL:
       return {
         loading: false,
         error: action.payload,

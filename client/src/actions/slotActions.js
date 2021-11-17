@@ -14,6 +14,9 @@ import {
   UPDATE_SLOT_REQUEST,
   UPDATE_SLOT_SUCCESS,
   UPDATE_SLOT_FAIL,
+  GET_MY_SLOT_REQUEST,
+  GET_MY_SLOT_FAIL,
+  GET_MY_SLOT_SUCCESS,
 } from '../constants';
 
 import axios from 'axios';
@@ -194,6 +197,35 @@ export const updateSlotByDate = (slotDate) => async (dispatch, getState) => {
   } catch (err) {
     dispatch({
       type: UPDATE_SLOT_FAIL,
+      payload:
+        err.response && err.response.data.msg ? err.response.data.msg : err.msg,
+    });
+  }
+};
+
+export const getMySlots = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: GET_MY_SLOT_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.get('/api/slot/mySlots', config);
+
+    dispatch({
+      type: GET_MY_SLOT_SUCCESS,
+      payload: data,
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_MY_SLOT_FAIL,
       payload:
         err.response && err.response.data.msg ? err.response.data.msg : err.msg,
     });

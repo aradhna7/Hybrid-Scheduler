@@ -56,6 +56,19 @@ const getSlotByDate = asyncHandler(async (req, res) => {
   }
 });
 
+//@desc Get all booking by user
+//@route GET /api/slot/mySlots
+//@access Private
+const getMySlot = asyncHandler(async (req, res) => {
+  const slots = await Slot.find({ user: req.user._id });
+
+  if (slots) {
+    res.json(slots);
+  } else {
+    res.status(404).json('Entry Not Found');
+  }
+});
+
 // @desc  Create slot on a particular date
 // @route POST /api/booking
 // @access Private
@@ -128,4 +141,5 @@ module.exports = {
   createSlot,
   getNumOfSlotByDate,
   updateSlot,
+  getMySlot,
 };

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Container, Row, Col } from 'reactstrap';
-import { Card, CardBody, CardText } from 'reactstrap';
-import { getNumOfSlotByDate } from '../actions/slotActions';
+import { Container, Row, Col } from 'reactstrap';
 import './Calender.js';
 import DateCard from './DateCard';
 var moment = require('moment');
