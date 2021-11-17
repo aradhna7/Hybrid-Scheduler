@@ -29,7 +29,7 @@ export default function IndexNavbar() {
 
   const logoutHandler = () => {
     dispatch(logout());
-    return !userInfo && <Redirect to='/' />;
+    return <Redirect to='/' />;
   };
 
   const [collapseOpen, setCollapseOpen] = React.useState(false);
@@ -168,6 +168,7 @@ export default function IndexNavbar() {
                 </Button>
               </NavItem>
             )}
+
             {userInfo && userInfo.isTeacher && (
               <NavItem>
                 <Link to='/setnumslots'>
@@ -177,6 +178,19 @@ export default function IndexNavbar() {
                     style={{ padding: '10px', marginBottom: '10px' }}
                   >
                     Set Num Slots
+                  </Button>
+                </Link>
+              </NavItem>
+            )}
+            {userInfo && (
+              <NavItem>
+                <Link to='/myslots'>
+                  <Button
+                    className='nav-link d-sm-block'
+                    style={{ padding: '10px' }}
+                    color='default'
+                  >
+                    My Slots
                   </Button>
                 </Link>
               </NavItem>
@@ -194,18 +208,7 @@ export default function IndexNavbar() {
                 </Link>
               </NavItem>
             )}
-            {userInfo && (
-              <NavItem>
-                <Button
-                  className='nav-link d-sm-block'
-                  style={{ padding: '10px' }}
-                  color='default'
-                  onClick={logoutHandler}
-                >
-                  Logout
-                </Button>
-              </NavItem>
-            )}
+
             {userInfo && (
               <NavItem>
                 <Button
@@ -218,7 +221,7 @@ export default function IndexNavbar() {
                 </Button>
               </NavItem>
             )}
-            {userInfo && (
+            {userInfo && userInfo.isTeacher && (
               <NavItem>
                 <Button
                   className='nav-link d-sm-block'
@@ -227,6 +230,18 @@ export default function IndexNavbar() {
                   href='/getnumslots'
                 >
                   Get list
+                </Button>
+              </NavItem>
+            )}
+            {userInfo && (
+              <NavItem>
+                <Button
+                  className='nav-link d-sm-block'
+                  style={{ padding: '10px' }}
+                  color='default'
+                  onClick={logoutHandler}
+                >
+                  Logout
                 </Button>
               </NavItem>
             )}

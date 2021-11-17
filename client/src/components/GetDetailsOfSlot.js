@@ -26,7 +26,7 @@ const GetDetailsOfSlot = ({ history }) => {
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    if (!userInfo.isTeacher) {
+    if (!userInfo) {
       history.push('/login');
     }
   }, [history, userInfo]);

@@ -47,8 +47,8 @@ const NumOfSlotSetting = ({ history }) => {
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    if (!userInfo.isTeacher) {
-      history.push('/');
+    if (!userInfo) {
+      history.push('/login');
     }
   }, [history, userInfo]);
 
