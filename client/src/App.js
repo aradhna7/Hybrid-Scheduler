@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from 'store';
 
@@ -21,7 +26,7 @@ import Index from 'views/Index';
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <Router>
         <IndexNavbar />
         <Switch>
           <Route exact path='/' component={Index} />
@@ -31,10 +36,10 @@ function App() {
           <Route exact path='/getnumslots' component={GetDetailsOfSlot} />
           <Route exact path='/login' component={Signin} />
           <Route exact path='/register' component={Register} />
-          <Redirect from='/' to='/' />
+          {/* <Redirect from='/' to='/' /> */}
         </Switch>
         <Footer />
-      </BrowserRouter>
+      </Router>
     </Provider>
   );
 }
