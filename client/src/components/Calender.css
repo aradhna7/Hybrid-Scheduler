@@ -29,16 +29,36 @@
   }
   
 .react-date-picker *{
-    background-color: #ffffff;
+    /* background-color: #EEEBDD; */
+
+    /* color: green; */
 }
 
 .react-date-picker__inputGroup__divider{
-    color: black;
+    color: white;
 }
 
 .numberCircle {
     border-radius: 50%;
-
-    color: #ffffff;
+    color: #d6bfbf;
     text-align: center;
+}
+
+abbr[title], abbr[data-original-title] {
+    text-decoration: underline;
+    text-decoration: underline dotted;
+    cursor: help;
+    border-bottom: 0;
+    text-decoration-skip-ink: none;
+    color: black;
+}
+
+.react-date-picker__button svg {
+    display: inherit;
+    color: aliceblue;
+    background-color: aliceblue;
+}
+
+.react-date-picker__inputGroup__input {
+    color: aliceblue;
 }

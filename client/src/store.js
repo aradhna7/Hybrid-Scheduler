@@ -15,6 +15,9 @@ import {
   getNumOfSlotsByDate,
   updateSlotByDate,
   mySlot,
+  deleteMyBooking,
+  incrementSlot,
+  decrementSlot,
 } from './reducers/slotReducers';
 
 const reducers = combineReducers({
@@ -28,6 +31,9 @@ const reducers = combineReducers({
   getNumOfSlotsByDate,
   updateSlotByDate,
   mySlot,
+  deleteMyBooking,
+  incrementSlot,
+  decrementSlot,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

@@ -6,8 +6,10 @@ const {
   getSlotByDate,
   createSlot,
   getNumOfSlotByDate,
-  updateSlot,
+  decrementSlot,
+  incrementSlot,
   getMySlot,
+  deleteBooking,
 } = require('../controllers/slotController');
 const { protect, teacher } = require('../middleware/authMiddleware');
 
@@ -17,11 +19,12 @@ router.route('/date').post(protect, teacher, getSlotByDate);
 
 router.route('/mySlots').get(protect, getMySlot);
 
-router
-  .route('/booking')
-  .post(protect, teacher, createSlot)
-  .put(protect, updateSlot);
+router.route('/booking').post(protect, teacher, createSlot);
 
+router.route('/decrement').put(protect, decrementSlot);
+router.route('/increment').put(protect, incrementSlot);
+
+router.route('/booking/:id').delete(protect, deleteBooking);
 router.route('/booking/date').post(protect, getNumOfSlotByDate);
 
 module.exports = router;

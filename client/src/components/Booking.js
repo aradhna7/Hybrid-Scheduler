@@ -4,7 +4,7 @@ import { Button, Container, Row, Col } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { storage } from 'firebase';
 import { Progress } from 'reactstrap';
-import { bookSlot, updateSlotByDate } from '../actions/slotActions';
+import { bookSlot, decrementSlotByDate } from '../actions/slotActions';
 
 const Booking = ({ match, history }) => {
   const dispatch = useDispatch();
@@ -70,17 +70,9 @@ const Booking = ({ match, history }) => {
     );
   };
 
-  const updateSlot = () => {
-    if (data) {
-      dispatch(updateSlotByDate(match.params.date));
-    }
-  };
-
   const submitDetails = (e) => {
     e.preventDefault();
     dispatch(bookSlot(user, url, match.params.date));
-    dispatch(updateSlotByDate(match.params.date));
-    updateSlot();
   };
 
   return (

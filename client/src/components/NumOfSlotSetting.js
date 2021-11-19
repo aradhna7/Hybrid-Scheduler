@@ -54,13 +54,16 @@ const NumOfSlotSetting = ({ history }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createSlot(numOfSlot, moment(value).format('Do,MMMM,YYYY')));
-
-    return slotCreate && <Redirect to='/' />;
+    if (numOfSlot < 0) {
+      alert('Number of slot has to be greater than 0');
+    } else {
+      dispatch(createSlot(numOfSlot, moment(value).format('Do,MMMM,YYYY')));
+      setnumOfSlot(0);
+      return slotCreate && <Redirect to='/' />;
+    }
   };
 
   const [value, onChange] = useState(new Date());
-  console.log(value);
 
   const handleChange = (e) => {
     setnumOfSlot(e.target.value);
@@ -77,7 +80,7 @@ const NumOfSlotSetting = ({ history }) => {
         setNum(response.numOfSlot);
       }
     });
-  }, [value]);
+  }, [value, error, slotCreate]);
 
   return (
     <div className='section section-examples'>

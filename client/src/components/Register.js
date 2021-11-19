@@ -82,7 +82,7 @@ export default function Signup({ location, history }) {
                   </p>
                   <div className='btn-wrapper'>
                     <Link to='/login'>
-                      <Button color='primary'>Go to Login Signup Page</Button>
+                      <Button color='primary'>Go to Login Page</Button>
                     </Link>
                   </div>
                 </Col>
@@ -173,7 +173,6 @@ export default function Signup({ location, history }) {
               </Row>
             </Container>
           </div>
-          );
         </div>
         <Footer />
       </div>

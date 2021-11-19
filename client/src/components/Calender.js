@@ -43,7 +43,7 @@ const Calender = ({ history }) => {
       <Container className='text-center'>
         <h1>Slot Booking</h1>
         <Row>
-          <Col sm='2'>
+          <Col lg='2' md='4' sm='12'>
             <DateCard
               date={today.format('dddd, MMMM, YYYY')}
               slotDate={today.format('Do,MMMM,YYYY')}
@@ -51,7 +51,7 @@ const Calender = ({ history }) => {
               weekday={today.format('dddd')}
             />
           </Col>
-          <Col sm='2'>
+          <Col lg='2' md='4' sm='12'>
             <DateCard
               date={today.add(1, 'days').format('dddd, MMMM, YYYY')}
               slotDate={today.format('Do,MMMM,YYYY')}
@@ -59,7 +59,7 @@ const Calender = ({ history }) => {
               weekday={today.format('dddd')}
             />
           </Col>
-          <Col sm='2'>
+          <Col lg='2' md='4' sm='12'>
             <DateCard
               date={today.add(1, 'days').format('dddd, MMMM, YYYY')}
               slotDate={today.format('Do,MMMM,YYYY')}
@@ -67,7 +67,7 @@ const Calender = ({ history }) => {
               weekday={today.format('dddd')}
             />
           </Col>
-          <Col sm='2'>
+          <Col lg='2' md='4' sm='12'>
             <DateCard
               date={today.add(1, 'days').format('dddd, MMMM, YYYY')}
               slotDate={today.format('Do,MMMM,YYYY')}
@@ -75,7 +75,7 @@ const Calender = ({ history }) => {
               weekday={today.format('dddd')}
             />
           </Col>
-          <Col sm='2'>
+          <Col lg='2' md='4' sm='12'>
             <DateCard
               date={today.add(1, 'days').format('dddd, MMMM, YYYY')}
               slotDate={today.format('Do,MMMM,YYYY')}
@@ -83,7 +83,7 @@ const Calender = ({ history }) => {
               weekday={today.format('dddd')}
             />
           </Col>
-          <Col sm='2'>
+          <Col lg='2' md='4' sm='12'>
             <DateCard
               date={today.add(1, 'days').format('dddd, MMMM, YYYY')}
               slotDate={today.format('Do,MMMM,YYYY')}
@@ -91,7 +91,7 @@ const Calender = ({ history }) => {
               weekday={today.format('dddd')}
             />
           </Col>
-          <Col sm='2'>
+          <Col lg='2' md='4' sm='12'>
             <DateCard
               date={today.add(1, 'days').format('dddd, MMMM, YYYY')}
               slotDate={today.format('Do,MMMM,YYYY')}
@@ -99,7 +99,7 @@ const Calender = ({ history }) => {
               weekday={today.format('dddd')}
             />
           </Col>
-          <Col sm='2'>
+          <Col lg='2' md='4' sm='12'>
             <DateCard
               date={today.add(1, 'days').format('dddd, MMMM, YYYY')}
               slotDate={today.format('Do,MMMM,YYYY')}
@@ -107,7 +107,7 @@ const Calender = ({ history }) => {
               weekday={today.format('dddd')}
             />
           </Col>
-          <Col sm='2'>
+          <Col lg='2' md='4' sm='12'>
             <DateCard
               date={today.add(1, 'days').format('dddd, MMMM, YYYY')}
               slotDate={today.format('Do,MMMM,YYYY')}
@@ -115,7 +115,7 @@ const Calender = ({ history }) => {
               weekday={today.format('dddd')}
             />
           </Col>
-          <Col sm='2'>
+          <Col lg='2' md='4' sm='12'>
             <DateCard
               date={today.add(1, 'days').format('dddd, MMMM, YYYY')}
               slotDate={today.format('Do,MMMM,YYYY')}
@@ -123,7 +123,7 @@ const Calender = ({ history }) => {
               weekday={today.format('dddd')}
             />
           </Col>
-          <Col sm='2'>
+          <Col lg='2' md='4' sm='12'>
             <DateCard
               date={today.add(1, 'days').format('dddd, MMMM, YYYY')}
               slotDate={today.format('Do,MMMM,YYYY')}
@@ -131,7 +131,7 @@ const Calender = ({ history }) => {
               weekday={today.format('dddd')}
             />
           </Col>
-          <Col sm='2'>
+          <Col lg='2' md='4' sm='12'>
             <DateCard
               date={today.add(1, 'days').format('dddd, MMMM, YYYY')}
               slotDate={today.format('Do,MMMM,YYYY')}
@@ -139,7 +139,9 @@ const Calender = ({ history }) => {
               weekday={today.format('dddd')}
             />
           </Col>
-          <small>{today.subtract(11, 'days').format('Do')}</small>
+          <small style={{ display: 'none' }}>
+            {today.subtract(11, 'days').format('Do')}
+          </small>
         </Row>
       </Container>
     </div>

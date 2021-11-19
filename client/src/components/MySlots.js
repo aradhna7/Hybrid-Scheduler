@@ -1,26 +1,9 @@
 import React, { useEffect } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMySlots } from '../actions/slotActions';
+import { deleteABooking, getMySlots } from '../actions/slotActions';
 
 import { Table } from 'reactstrap';
-
-const eachRowTable = (slot, id) => {
-  return (
-    <tr>
-      <th scope='row'>{id + 1}</th>
-      <td>{slot.slotDate}</td>
-      <td>
-        {' '}
-        <img
-          style={{ width: '200px', height: '200px' }}
-          alt='...'
-          src={slot.vaccination_certi}
-        />
-      </td>
-    </tr>
-  );
-};
 
 const MySlots = ({ history }) => {
   const dispatch = useDispatch();
@@ -28,6 +11,8 @@ const MySlots = ({ history }) => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const deleteMyBooking = useSelector((state) => state.deleteMyBooking);
+  const { error, msg } = deleteMyBooking;
 
   useEffect(() => {
     if (!userInfo) {
@@ -37,7 +22,51 @@ const MySlots = ({ history }) => {
 
   useEffect(() => {
     dispatch(getMySlots());
-  }, []);
+  }, [dispatch, msg, error]);
+
+  //AFTER ONCLICK DELETE BOOKING
+  const handleDelete = (e) => {
+    console.log(e.target.slotDate);
+    dispatch(deleteABooking(e.target.name, e.target.slotDate));
+    if (error) {
+      alert(error);
+    } else if (msg) {
+      alert(msg.msg);
+    }
+  };
+
+  //EACH ROW OF TABLE STRUCT
+  const eachRowTable = (slot, id) => {
+    console.log(slot._id);
+
+    return (
+      <tr>
+        <th scope='row'>{id + 1}</th>
+        <td>{slot.slotDate}</td>
+        {/* <td>
+          {' '}
+          <img
+            style={{ width: '10px', height: '10px' }}
+            alt='...'
+            src={slot.vaccination_certi}
+          />
+        </td> */}
+        <td>
+          {' '}
+          <Button
+            slotDate={slot.slotDate}
+            name={slot._id}
+            onClick={() => {
+              dispatch(deleteABooking(slot._id, slot.slotDate));
+            }}
+            className='danger'
+          >
+            Delete
+          </Button>
+        </td>
+      </tr>
+    );
+  };
 
   const { slots, loading } = mySlot;
   return (
@@ -59,7 +88,7 @@ const MySlots = ({ history }) => {
               <tr>
                 <th>No</th>
                 <th>Name</th>
-                <th>Vacination_Certificate</th>
+                <th>DELETE</th>
               </tr>
             </thead>
             <tbody>

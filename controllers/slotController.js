@@ -69,6 +69,20 @@ const getMySlot = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc Delete a booking
+// @route DELETE /api/slot/booking/:id
+// @access Private
+const deleteBooking = asyncHandler(async (req, res) => {
+  const booking = await Slot.findById(req.params.id);
+
+  if (booking) {
+    await booking.remove();
+    res.json({ msg: 'Booking removed' });
+  } else {
+    res.status(404).json({ msg: 'Booking not found' });
+  }
+});
+
 // @desc  Create slot on a particular date
 // @route POST /api/booking
 // @access Private
@@ -101,16 +115,38 @@ const createSlot = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc Update a slot  (//decrement value by 1)
+// @desc decrement a slot  (//decrement value by 1)
 // @route PUT /api/slot/decrement
 // @access Private
-const updateSlot = asyncHandler(async (req, res) => {
+const decrementSlot = asyncHandler(async (req, res) => {
   const { slotDate } = req.body;
 
   const slot = await NumOfSlot.findOne({ slotDate });
 
   if (slot) {
-    slot.numOfSlotRemaining = slot.numOfSlotRemaining - 1;
+    if (slot.numOfSlotRemaining !== 0) {
+      slot.numOfSlotRemaining = slot.numOfSlotRemaining - 1;
+    }
+
+    const updatedSlot = await slot.save();
+    res.json(updatedSlot);
+  } else {
+    res.status(404).json({ message: 'Slot not found' });
+  }
+});
+
+// @desc increment a slot  (//increment value by 1)
+// @route PUT /api/slot/increment
+// @access Private
+const incrementSlot = asyncHandler(async (req, res) => {
+  const { slotDate } = req.body;
+
+  const slot = await NumOfSlot.findOne({ slotDate });
+
+  if (slot) {
+    if (slot.numOfSlot !== slot.numOfSlotRemaining) {
+      slot.numOfSlotRemaining = slot.numOfSlotRemaining + 1;
+    }
 
     const updatedSlot = await slot.save();
     res.json(updatedSlot);
@@ -140,6 +176,8 @@ module.exports = {
   getSlotByDate,
   createSlot,
   getNumOfSlotByDate,
-  updateSlot,
+  decrementSlot,
+  incrementSlot,
   getMySlot,
+  deleteBooking,
 };

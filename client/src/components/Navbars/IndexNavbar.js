@@ -99,12 +99,12 @@ export default function IndexNavbar() {
         >
           <div className='navbar-collapse-header'>
             <Row>
-              <Col className='collapse-brand' xs='6'>
+              <Col className='collapse-brand' xs='8'>
                 <a href='#pablo' onClick={(e) => e.preventDefault()}>
                   Hybrid Scheduler
                 </a>
               </Col>
-              <Col className='collapse-close text-right' xs='6'>
+              <Col className='collapse-close text-right' xs='4'>
                 <button
                   aria-expanded={collapseOpen}
                   className='navbar-toggler'
@@ -116,34 +116,6 @@ export default function IndexNavbar() {
             </Row>
           </div>
           <Nav navbar>
-            <UncontrolledDropdown nav>
-              <DropdownToggle
-                caret
-                color='default'
-                data-toggle='dropdown'
-                href='#pablo'
-                nav
-                onClick={(e) => e.preventDefault()}
-              >
-                <i className='fa fa-cogs d-lg-none d-xl-none' />
-                Book Slot
-              </DropdownToggle>
-              <DropdownMenu className='dropdown-with-icons'>
-                <DropdownItem href='https://demos.creative-tim.com/blk-design-system-react/#/documentation/overview'>
-                  <i className='tim-icons icon-paper' />a
-                </DropdownItem>
-                <DropdownItem tag={Link} to='/register-page'>
-                  <i className='tim-icons icon-bullet-list-67' />b
-                </DropdownItem>
-                <DropdownItem tag={Link} to='/landing-page'>
-                  <i className='tim-icons icon-image-02' />c
-                </DropdownItem>
-                <DropdownItem tag={Link} to='/profile-page'>
-                  <i className='tim-icons icon-single-02' />d
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-
             {!userInfo && (
               <NavItem>
                 <Link to='/register'>
@@ -157,11 +129,25 @@ export default function IndexNavbar() {
                 </Link>
               </NavItem>
             )}
+
+            {!userInfo && (
+              <NavItem>
+                <Link to='/login'>
+                  <Button
+                    className='nav-link d-sm-block'
+                    style={{ padding: '10px', marginBottom: '10px' }}
+                    color='default'
+                  >
+                    Signin
+                  </Button>
+                </Link>
+              </NavItem>
+            )}
             {userInfo && (
               <NavItem>
                 <Button
                   className='nav-link d-sm-block'
-                  style={{ padding: '10px' }}
+                  style={{ padding: '10px', marginBottom: '10px' }}
                   color='success'
                 >
                   Hi, {userInfo.name}
@@ -171,61 +157,9 @@ export default function IndexNavbar() {
 
             {userInfo && userInfo.isTeacher && (
               <NavItem>
-                <Link to='/setnumslots'>
-                  <Button
-                    className='nav-link d-sm-block'
-                    color='default'
-                    style={{ padding: '10px', marginBottom: '10px' }}
-                  >
-                    Set Num Slots
-                  </Button>
-                </Link>
-              </NavItem>
-            )}
-            {userInfo && (
-              <NavItem>
-                <Link to='/myslots'>
-                  <Button
-                    className='nav-link d-sm-block'
-                    style={{ padding: '10px' }}
-                    color='default'
-                  >
-                    My Slots
-                  </Button>
-                </Link>
-              </NavItem>
-            )}
-            {!userInfo && (
-              <NavItem>
-                <Link to='/login'>
-                  <Button
-                    className='nav-link d-sm-block'
-                    style={{ padding: '10px' }}
-                    color='default'
-                  >
-                    Signin
-                  </Button>
-                </Link>
-              </NavItem>
-            )}
-
-            {userInfo && (
-              <NavItem>
                 <Button
                   className='nav-link d-sm-block'
-                  style={{ padding: '10px' }}
-                  color='default'
-                  href='/calender'
-                >
-                  Calender
-                </Button>
-              </NavItem>
-            )}
-            {userInfo && userInfo.isTeacher && (
-              <NavItem>
-                <Button
-                  className='nav-link d-sm-block'
-                  style={{ padding: '10px' }}
+                  style={{ padding: '10px', marginBottom: '10px' }}
                   color='default'
                   href='/getnumslots'
                 >
@@ -233,11 +167,51 @@ export default function IndexNavbar() {
                 </Button>
               </NavItem>
             )}
+
+            {userInfo && userInfo.isTeacher && (
+              <NavItem>
+                <Button
+                  className='nav-link d-sm-block'
+                  style={{ backgroundColor: 'transparent' }}
+                  style={{ padding: '10px', marginBottom: '10px' }}
+                  href='/setnumslots'
+                >
+                  Set Num Slots
+                </Button>
+              </NavItem>
+            )}
+
             {userInfo && (
               <NavItem>
                 <Button
                   className='nav-link d-sm-block'
-                  style={{ padding: '10px' }}
+                  style={{ padding: '10px', marginBottom: '10px' }}
+                  color='default'
+                  href='/myslots'
+                >
+                  My Slots
+                </Button>
+              </NavItem>
+            )}
+
+            {userInfo && (
+              <NavItem>
+                <Button
+                  className='nav-link d-sm-block'
+                  style={{ padding: '10px', marginBottom: '10px' }}
+                  color='default'
+                  href='/calender'
+                >
+                  Calender
+                </Button>
+              </NavItem>
+            )}
+
+            {userInfo && (
+              <NavItem>
+                <Button
+                  className='nav-link d-sm-block'
+                  style={{ padding: '10px', marginBottom: '10px' }}
                   color='default'
                   onClick={logoutHandler}
                 >

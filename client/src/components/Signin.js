@@ -45,6 +45,11 @@ const Signin = ({ location, history }) => {
 
   const redirect = location.search ? location.search.split('=')[1] : '/';
 
+  useEffect(() => {
+    if (error === 'Request failed with status code 401')
+      alert('Wrong credentials!!');
+  }, [error]);
+
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(loginUser(email, password));
@@ -155,7 +160,6 @@ const Signin = ({ location, history }) => {
               </Row>
             </Container>
           </div>
-          );
         </div>
         <Footer />
       </div>

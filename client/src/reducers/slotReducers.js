@@ -14,6 +14,15 @@ import {
   GET_MY_SLOT_FAIL,
   GET_MY_SLOT_REQUEST,
   GET_MY_SLOT_SUCCESS,
+  DELETE_A_BOOKING_REQUEST,
+  DELETE_A_BOOKING_SUCCESS,
+  DELETE_A_BOOKING_FAIL,
+  INCREMENT_SLOT_REQUEST,
+  INCREMENT_SLOT_SUCCESS,
+  INCREMENT_SLOT_FAIL,
+  DECREMENT_SLOT_REQUEST,
+  DECREMENT_SLOT_SUCCESS,
+  DECREMENT_SLOT_FAIL,
 } from '../constants';
 
 export const slotCreate = (state = {}, action) => {
@@ -134,6 +143,69 @@ export const mySlot = (state = { slots: [] }, action) => {
         loading: false,
       };
     case GET_MY_SLOT_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const deleteMyBooking = (state = {}, action) => {
+  switch (action.type) {
+    case DELETE_A_BOOKING_REQUEST:
+      return {
+        loading: true,
+      };
+    case DELETE_A_BOOKING_SUCCESS:
+      return {
+        msg: action.payload,
+        loading: false,
+      };
+    case DELETE_A_BOOKING_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const incrementSlot = (state = {}, action) => {
+  switch (action.type) {
+    case INCREMENT_SLOT_REQUEST:
+      return {
+        loading: true,
+      };
+    case INCREMENT_SLOT_SUCCESS:
+      return {
+        slots: action.payload,
+        loading: false,
+      };
+    case INCREMENT_SLOT_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const decrementSlot = (state = {}, action) => {
+  switch (action.type) {
+    case DECREMENT_SLOT_REQUEST:
+      return {
+        loading: true,
+      };
+    case DECREMENT_SLOT_SUCCESS:
+      return {
+        slots: action.payload,
+        loading: false,
+      };
+    case DECREMENT_SLOT_FAIL:
       return {
         loading: false,
         error: action.payload,
