@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Button } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteABooking, getMySlots } from '../actions/slotActions';
 
@@ -24,17 +24,6 @@ const MySlots = ({ history }) => {
     dispatch(getMySlots());
   }, [dispatch, msg, error]);
 
-  //AFTER ONCLICK DELETE BOOKING
-  const handleDelete = (e) => {
-    console.log(e.target.slotDate);
-    dispatch(deleteABooking(e.target.name, e.target.slotDate));
-    if (error) {
-      alert(error);
-    } else if (msg) {
-      alert(msg.msg);
-    }
-  };
-
   //EACH ROW OF TABLE STRUCT
   const eachRowTable = (slot, id) => {
     console.log(slot._id);
@@ -43,14 +32,6 @@ const MySlots = ({ history }) => {
       <tr>
         <th scope='row'>{id + 1}</th>
         <td>{slot.slotDate}</td>
-        {/* <td>
-          {' '}
-          <img
-            style={{ width: '10px', height: '10px' }}
-            alt='...'
-            src={slot.vaccination_certi}
-          />
-        </td> */}
         <td>
           {' '}
           <Button
@@ -87,7 +68,7 @@ const MySlots = ({ history }) => {
             <thead>
               <tr>
                 <th>No</th>
-                <th>Name</th>
+                <th>Date</th>
                 <th>DELETE</th>
               </tr>
             </thead>

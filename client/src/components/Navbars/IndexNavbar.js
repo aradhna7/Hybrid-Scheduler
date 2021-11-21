@@ -5,14 +5,9 @@ import { Redirect } from 'react-router';
 import {
   Button,
   Collapse,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
   NavbarBrand,
   Navbar,
   NavItem,
-  NavLink,
   Nav,
   Container,
   Row,
@@ -63,11 +58,6 @@ export default function IndexNavbar() {
   };
   const onCollapseExited = () => {
     setCollapseOut('');
-  };
-  const scrollToDownload = () => {
-    document
-      .getElementById('download-section')
-      .scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -176,7 +166,7 @@ export default function IndexNavbar() {
                   style={{ padding: '10px', marginBottom: '10px' }}
                   href='/setnumslots'
                 >
-                  Set Num Slots
+                  Create Slots
                 </Button>
               </NavItem>
             )}

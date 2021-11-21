@@ -14,6 +14,9 @@ import {
   USER_LIST_SUCCESS,
   USER_LIST_FAIL,
   USER_LIST_RESET,
+  USER_PROFILE_UPDATE_REQUEST,
+  USER_PROFILE_UPDATE_SUCCESS,
+  USER_PROFILE_UPDATE_FAIL,
 } from '../constants';
 
 export const userLogin = (state = { userInfo: {} }, action) => {
@@ -108,6 +111,30 @@ export const userList = (state = { users: [] }, action) => {
         users: [],
       };
 
+    default:
+      return state;
+  }
+};
+
+export const userUpdateProfile = (state = {}, action) => {
+  switch (action.type) {
+    case USER_PROFILE_UPDATE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case USER_PROFILE_UPDATE_SUCCESS:
+      return {
+        loading: false,
+        user: action.payload,
+        success: true,
+      };
+
+    case USER_PROFILE_UPDATE_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }

@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const NumOfSlot = require('../models/NumOfSlot');
 const Slot = require('../models/Slot');
+const User = require('../models/User');
 
 // @desc  Book slot of user
 // @route POST /api/slot
@@ -8,6 +9,7 @@ const Slot = require('../models/Slot');
 const bookSlot = asyncHandler(async (req, res) => {
   const { user, vaccination_certi, slotDate } = req.body;
 
+  //find if slot already exist
   const slotOnThatDayAlreadyBooked = await Slot.findOne({ user, slotDate });
 
   if (slotOnThatDayAlreadyBooked) {
@@ -47,7 +49,10 @@ const getSlots = asyncHandler(async (req, res) => {
 const getSlotByDate = asyncHandler(async (req, res) => {
   const { slotDate } = req.body;
 
-  const slots = await Slot.find({ slotDate }).populate('user', '_id name');
+  const slots = await Slot.find({ slotDate }).populate(
+    'user',
+    '_id name vaccination_certi'
+  );
 
   if (slots) {
     res.json(slots);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Container, Row, Col, Input, Label } from 'reactstrap';
+import { Button, Container, Row, Col, Input } from 'reactstrap';
 import { Card, CardBody, CardText } from 'reactstrap';
 import DatePicker from 'react-date-picker';
 import { createSlot } from '../actions/slotActions';
@@ -74,7 +74,7 @@ const NumOfSlotSetting = ({ history }) => {
   useEffect(() => {
     const slotDate = moment(value).format('Do,MMMM,YYYY');
     getnumslots({ slotDate }).then((response) => {
-      if (response == 'Entry Not Found') {
+      if (response === 'Entry Not Found') {
         setNum(-1);
       } else {
         setNum(response.numOfSlot);
@@ -105,7 +105,7 @@ const NumOfSlotSetting = ({ history }) => {
                 <Col sm='12' className='box-num-slots mb-5 mt-3 '>
                   <DatePicker onChange={onChange} value={value} />
                   <h4></h4>
-                  {num == -1 ? (
+                  {num === -1 ? (
                     <h4>No slots allocated till now</h4>
                   ) : (
                     <h4>Number Of slots allocated: {num}</h4>

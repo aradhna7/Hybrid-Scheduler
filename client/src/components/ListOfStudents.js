@@ -1,18 +1,16 @@
 import React from 'react';
-import { Table } from 'reactstrap';
+import { Button, Table } from 'reactstrap';
 
 const eachRowTable = (slot, id) => {
+  const clicktoshow = () => {
+    window.open(slot.user.vaccination_certi);
+  };
   return (
     <tr>
       <th scope='row'>{id + 1}</th>
       <td>{slot.user.name}</td>
       <td>
-        {' '}
-        <img
-          style={{ width: '200px', height: '200px' }}
-          alt='...'
-          src={slot.vaccination_certi}
-        />
+        <Button onClick={clicktoshow}>Open</Button>
       </td>
     </tr>
   );
@@ -23,7 +21,7 @@ const ListOfStudents = ({ slots }) => {
     <div>
       <h1 className='mt-4'>List Of Students</h1>
       {slots && (
-        <Table>
+        <Table className='mt-4'>
           <thead>
             <tr>
               <th>No</th>

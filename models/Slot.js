@@ -10,7 +10,7 @@ const BookingSchema = new mongoose.Schema(
     vaccination_certi: {
       type: String,
       required: [true, 'Please add an Vaccination Certificate'],
-      trim: true,
+  
     },
     slotDate: {
       type: String,

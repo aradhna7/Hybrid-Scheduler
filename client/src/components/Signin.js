@@ -11,8 +11,6 @@ import {
   CardFooter,
   CardImg,
   CardTitle,
-  Label,
-  FormGroup,
   Form,
   Input,
   InputGroupAddon,
@@ -23,7 +21,6 @@ import {
   Col,
 } from 'reactstrap';
 import IndexNavbar from 'components/Navbars/IndexNavbar.js';
-import Footer from 'components/Footer/Footer.js';
 
 const Signin = ({ location, history }) => {
   React.useEffect(() => {
@@ -32,7 +29,6 @@ const Signin = ({ location, history }) => {
       document.body.classList.toggle('index-page');
     };
   }, []);
-  const [fullNameFocus, setFullNameFocus] = React.useState(false);
   const [emailFocus, setEmailFocus] = React.useState(false);
   const [passwordFocus, setPasswordFocus] = React.useState(false);
 
@@ -41,7 +37,7 @@ const Signin = ({ location, history }) => {
 
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, userInfo, error } = userLogin;
+  const { userInfo, error } = userLogin;
 
   const redirect = location.search ? location.search.split('=')[1] : '/';
 
@@ -120,7 +116,7 @@ const Signin = ({ location, history }) => {
                           </InputGroupAddon>
                           <Input
                             placeholder='Password'
-                            type='text'
+                            type='password'
                             onFocus={(e) => setPasswordFocus(true)}
                             onBlur={(e) => setPasswordFocus(false)}
                             value={password}
@@ -161,7 +157,6 @@ const Signin = ({ location, history }) => {
             </Container>
           </div>
         </div>
-        <Footer />
       </div>
     </>
   );

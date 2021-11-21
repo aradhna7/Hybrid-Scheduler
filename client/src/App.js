@@ -40,6 +40,7 @@ function App() {
           <Route exact path='/myslots' component={MySlots} />
           {/* <Redirect from='/' to='/' /> */}
         </Switch>
+        <Footer />
       </Router>
     </Provider>
   );

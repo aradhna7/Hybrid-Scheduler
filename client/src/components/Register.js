@@ -11,8 +11,6 @@ import {
   CardFooter,
   CardImg,
   CardTitle,
-  Label,
-  FormGroup,
   Form,
   Input,
   InputGroupAddon,
@@ -21,9 +19,9 @@ import {
   Container,
   Row,
   Col,
+  Alert,
 } from 'reactstrap';
 import IndexNavbar from 'components/Navbars/IndexNavbar.js';
-import Footer from 'components/Footer/Footer.js';
 
 export default function Signup({ location, history }) {
   React.useEffect(() => {
@@ -32,10 +30,14 @@ export default function Signup({ location, history }) {
       document.body.classList.toggle('index-page');
     };
   }, []);
+
+  //states
   const [fullNameFocus, setFullNameFocus] = React.useState(false);
   const [emailFocus, setEmailFocus] = React.useState(false);
   const [passwordFocus, setPasswordFocus] = React.useState(false);
+  const [displayError, setDisplayError] = useState(false);
 
+  //form states
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,13 +45,23 @@ export default function Signup({ location, history }) {
   const dispatch = useDispatch();
 
   const userRegister = useSelector((state) => state.userRegister);
-  const { loading, userInfo, error } = userRegister;
+  const { userInfo, error } = userRegister;
+
+  useEffect(() => {
+    if (error === 'Request failed with status code 400') {
+      setDisplayError(true);
+    }
+  }, [error]);
 
   const redirect = location.search ? location.search.split('=')[1] : '/';
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(registerUser(name, email, password));
+    if (name && email && password) {
+      dispatch(registerUser(name, email, password));
+    } else {
+      alert('All fields are neccesary');
+    }
   };
 
   useEffect(() => {
@@ -71,6 +83,11 @@ export default function Signup({ location, history }) {
               <div className='squares square-4' />
               <Row className='row-grid justify-content-between align-items-center'>
                 <Col lg='6'>
+                  {displayError && (
+                    <Alert color='danger'>
+                      User already exist with this email Id
+                    </Alert>
+                  )}
                   <h3 className='display-3 text-white'>
                     Hybrid Scheduler <span className='text-white'></span>
                   </h3>
@@ -115,7 +132,11 @@ export default function Signup({ location, history }) {
                             onFocus={(e) => setFullNameFocus(true)}
                             onBlur={(e) => setFullNameFocus(false)}
                             value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            onChange={(e) => {
+                              setName(e.target.value);
+                              setDisplayError(false);
+                            }}
+                            required
                           />
                         </InputGroup>
                         <InputGroup
@@ -134,7 +155,11 @@ export default function Signup({ location, history }) {
                             onFocus={(e) => setEmailFocus(true)}
                             onBlur={(e) => setEmailFocus(false)}
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={(e) => {
+                              setEmail(e.target.value);
+                              setDisplayError(false);
+                            }}
+                            required
                           />
                         </InputGroup>
                         <InputGroup
@@ -149,11 +174,15 @@ export default function Signup({ location, history }) {
                           </InputGroupAddon>
                           <Input
                             placeholder='Password'
-                            type='text'
+                            type='password'
                             onFocus={(e) => setPasswordFocus(true)}
                             onBlur={(e) => setPasswordFocus(false)}
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={(e) => {
+                              setPassword(e.target.value);
+                              setDisplayError(false);
+                            }}
+                            required
                           />
                         </InputGroup>
                       </Form>
@@ -174,7 +203,6 @@ export default function Signup({ location, history }) {
             </Container>
           </div>
         </div>
-        <Footer />
       </div>
     </>
   );

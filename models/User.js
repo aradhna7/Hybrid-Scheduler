@@ -21,6 +21,10 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    vaccination_certi: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );

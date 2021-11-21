@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Container, Row, Col, Input, Label } from 'reactstrap';
+import { Button, Container, Row, Col } from 'reactstrap';
 import { Card, CardBody, CardText } from 'reactstrap';
 import DatePicker from 'react-date-picker';
 import { getSlotBookingByDate } from '../actions/slotActions';
@@ -70,15 +69,8 @@ const GetDetailsOfSlot = ({ history }) => {
           Get List
         </Button>
 
-        {/* {loading ? 'loading' : TableList(slotList)} */}
-        {/* {slots && TableList(slots)}
-        {JSON.stringify(slots)} */}
-        {/* {loading
-          ? 'loading'
-          : slotList && slotList.length > 0
-          ? TableList(slots)
-          : 'no record found'} */}
-        {loading ? 'loading' : <ListOfStudents slots={slots} />}
+        {loading && 'loading'}
+        <ListOfStudents slots={slots} />
       </Container>
     </div>
   );

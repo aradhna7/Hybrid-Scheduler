@@ -1,16 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // reactstrap components
-import {
-  Button,
-  NavItem,
-  NavLink,
-  Nav,
-  Container,
-  Row,
-  Col,
-  UncontrolledTooltip,
-} from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 
 export default function Footer() {
   return (
@@ -18,7 +9,13 @@ export default function Footer() {
       <Container>
         <Row>
           <Col className='text-center py-3'>
-            Copyright &copy; {new Date().getFullYear()}, Made with 💖 by Aradhna
+            Copyright &copy; {new Date().getFullYear()}, Made with 💖 by{' '}
+            {/* <a
+              href='https://www.linkedin.com/in/aradhna7sharma/'
+              target='_blank'
+            >
+              Aradhna
+            </a> */}
           </Col>
         </Row>
       </Container>

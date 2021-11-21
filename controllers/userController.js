@@ -16,6 +16,7 @@ const authUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isTeacher: user.isTeacher,
+      vaccination_certi: user.vaccination_certi,
       token: generateToken(user._id),
     });
   } else {
@@ -46,6 +47,7 @@ const registerUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isTeacher: user.isTeacher,
+      vaccination_certi: user.vaccination_certi,
       token: generateToken(user._id),
     });
   } else {
@@ -65,6 +67,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isTeacher: user.isTeacher,
+      vaccination_certi: user.vaccination_certi,
     });
   } else {
     res.status(404).json('User Not Found');
@@ -80,9 +83,9 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   if (user) {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
-    if (req.body.password) {
-      user.password = req.body.password;
-    }
+    user.vaccination_certi =
+      req.body.vaccination_certi || user.vaccination_certi;
+
     const updatedUser = await user.save();
 
     res.json({
@@ -90,6 +93,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       name: updatedUser.name,
       email: updatedUser.email,
       isTeacher: updatedUser.isTeacher,
+      vaccination_certi: updatedUser.vaccination_certi,
       token: generateToken(updatedUser._id),
     });
   } else {

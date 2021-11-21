@@ -3,7 +3,6 @@ import React from 'react';
 // core components
 import IndexNavbar from 'components/Navbars/IndexNavbar.js';
 import PageHeader from 'components/PageHeader/PageHeader.js';
-import Footer from 'components/Footer/Footer.js';
 
 export default function Index() {
   React.useEffect(() => {
@@ -18,7 +17,6 @@ export default function Index() {
       <div className='wrapper'>
         <PageHeader />
         <div className='main'></div>
-        <Footer />
       </div>
     </>
   );

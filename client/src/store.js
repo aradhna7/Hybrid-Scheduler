@@ -6,6 +6,7 @@ import {
   userRegister,
   userDetails,
   userList,
+  userUpdateProfile,
 } from './reducers/userReducers';
 
 import {
@@ -34,6 +35,7 @@ const reducers = combineReducers({
   deleteMyBooking,
   incrementSlot,
   decrementSlot,
+  userUpdateProfile,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
