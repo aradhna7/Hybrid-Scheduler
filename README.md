@@ -11,11 +11,15 @@ Hybrid classes work in such a manner that half-strength would attend college/sch
 ### PROBLEM
 The problem that arise here is how to manage which student should come on which specific days, provided the number of students should not exceed the fixed number to maintain proper social distancing on each working day?
 
-<p align="center">
-<a href="https://hybrid-scheduler.herokuapp.com/">
-<img src="https://drive.google.com/file/d/1yKYf7_5YIY4LYnWCmVP9qAT7o9Ogxrlq/view?usp=sharing" alt="HYBRID SCHEDULER"/>
-</a>
-</p>
 
-![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
+
+![Landing Page](https://cdn0.iconfinder.com/data/icons/3d-front-gradient/256/calender-front-gradient.png)
+
+[![Generic badge](https://img.shields.io/badge/view-demo-blue?style=for-the-badge&label=View%20Demo%20Video)]() 
+
+## Tech Stack
+![Landing Page](https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/168257270/original/f78696dbacb2929525009ef4f3380f8ebdee8bab/develop-mern-stack-application.jpg)
+
+
+## Features and Interfaces
 
