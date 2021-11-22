@@ -10,12 +10,12 @@ export default function Footer() {
         <Row>
           <Col className='text-center py-3'>
             Copyright &copy; {new Date().getFullYear()}, Made with 💖 by{' '}
-            {/* <a
+            <a
               href='https://www.linkedin.com/in/aradhna7sharma/'
               target='_blank'
             >
               Aradhna
-            </a> */}
+            </a>
           </Col>
         </Row>
       </Container>
