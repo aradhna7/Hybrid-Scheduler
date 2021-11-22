@@ -98,9 +98,7 @@ const createSlot = asyncHandler(async (req, res) => {
   const slotAlreadyFormed = await NumOfSlot.findOne({ slotDate });
 
   if (slotAlreadyFormed) {
-    return res
-      .status(400)
-      .json({ msg: 'Slot is already formed, update the num of slots' });
+    return res.status(400).json({ msg: 'Slot is already formed' });
   }
 
   const numslot = await NumOfSlot.create({

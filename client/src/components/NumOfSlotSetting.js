@@ -70,6 +70,7 @@ const NumOfSlotSetting = ({ history }) => {
   };
 
   const [num, setNum] = useState(0);
+  const [remnum, setRemNum] = useState(0);
 
   useEffect(() => {
     const slotDate = moment(value).format('Do,MMMM,YYYY');
@@ -78,6 +79,7 @@ const NumOfSlotSetting = ({ history }) => {
         setNum(-1);
       } else {
         setNum(response.numOfSlot);
+        setRemNum(response.numOfSlotRemaining);
       }
     });
   }, [value, error, slotCreate]);
@@ -108,7 +110,10 @@ const NumOfSlotSetting = ({ history }) => {
                   {num === -1 ? (
                     <h4>No slots allocated till now</h4>
                   ) : (
-                    <h4>Number Of slots allocated: {num}</h4>
+                    <h4>
+                      Number Of slots allocated: {num} <br />
+                      Numberof slot Remaining: {remnum}
+                    </h4>
                   )}
                 </Col>
                 <Col sm='6' className='box-num-slots'>
