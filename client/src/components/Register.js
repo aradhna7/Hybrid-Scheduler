@@ -20,6 +20,8 @@ import {
   Row,
   Col,
   Alert,
+  Label,
+  FormGroup,
 } from 'reactstrap';
 import IndexNavbar from 'components/Navbars/IndexNavbar.js';
 
@@ -41,6 +43,7 @@ export default function Signup({ location, history }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isTeacher, setIsTeacher] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -58,7 +61,7 @@ export default function Signup({ location, history }) {
   const submitHandler = (e) => {
     e.preventDefault();
     if (name && email && password) {
-      dispatch(registerUser(name, email, password));
+      dispatch(registerUser(name, email, password, isTeacher));
     } else {
       alert('All fields are neccesary');
     }
@@ -185,6 +188,17 @@ export default function Signup({ location, history }) {
                             required
                           />
                         </InputGroup>
+
+                        <FormGroup check className='text-left'>
+                          <Label check>
+                            <Input
+                              type='checkbox'
+                              onChange={() => setIsTeacher(!isTeacher)}
+                            />
+                            <span className='form-check-sign' />
+                            Is A Teacher
+                          </Label>
+                        </FormGroup>
                       </Form>
                     </CardBody>
                     <CardFooter>

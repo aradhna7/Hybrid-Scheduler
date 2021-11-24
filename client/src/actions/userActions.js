@@ -55,47 +55,49 @@ export const loginUser = (email, password) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   localStorage.removeItem('userInfo');
+  localStorage.removeItem('token');
   dispatch({ type: USER_LOGOUT });
   dispatch({ type: USER_DETAILS_RESET });
   dispatch({ type: USER_LIST_RESET });
 };
 
-export const registerUser = (name, email, password) => async (dispatch) => {
-  try {
-    dispatch({
-      type: USER_REGISTER_REQUEST,
-    });
+export const registerUser =
+  (name, email, password, isTeacher) => async (dispatch) => {
+    try {
+      dispatch({
+        type: USER_REGISTER_REQUEST,
+      });
 
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    const res = await axios.post(
-      '/api/users',
-      { name, email, password },
-      config
-    );
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await axios.post(
+        '/api/users',
+        { name, email, password, isTeacher },
+        config
+      );
 
-    dispatch({
-      type: USER_REGISTER_SUCCESS,
-      payload: res.data,
-    });
-    dispatch({
-      type: USER_LOGIN_SUCCESS,
-      payload: res.data,
-    });
-    localStorage.setItem('userInfo', JSON.stringify(res.data));
-  } catch (err) {
-    dispatch({
-      type: USER_REGISTER_FAIL,
-      payload:
-        err.response && err.response.data.message
-          ? err.response.data.message
-          : err.message,
-    });
-  }
-};
+      dispatch({
+        type: USER_REGISTER_SUCCESS,
+        payload: res.data,
+      });
+      dispatch({
+        type: USER_LOGIN_SUCCESS,
+        payload: res.data,
+      });
+      localStorage.setItem('userInfo', JSON.stringify(res.data));
+    } catch (err) {
+      dispatch({
+        type: USER_REGISTER_FAIL,
+        payload:
+          err.response && err.response.data.message
+            ? err.response.data.message
+            : err.message,
+      });
+    }
+  };
 
 export const getUserDetails = (id) => async (dispatch, getState) => {
   try {

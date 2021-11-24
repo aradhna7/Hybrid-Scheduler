@@ -81,11 +81,27 @@ The problem that arise here is how to manage which student should come on which 
 
 7. Get the list of students coming on a particular date (by teacher)
 
-8. Sign in, Signup feature using jwt authentication.
+8. Sign in, Signup feature using jwt authentication and encryption of password using bcrypt.
 
-9. Seperate dashboard for student and teacher.
+9. Separate dashboard for student and teacher.
 
 <br>
+
+## Project Timeline
+![Landing Page](snapshots/timeline.png)
+
+<br>
+
+## High level Design
+![Landing Page](snapshots/HLD.png)
+
+<br>
+
+## Database Schema
+![Landing Page](snapshots/schema.png)
+
+<br>
+
 
 ## Future Scope
  - Slot Booking available for different subject classes on a particular date

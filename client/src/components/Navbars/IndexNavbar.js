@@ -24,7 +24,7 @@ export default function IndexNavbar() {
 
   const logoutHandler = () => {
     dispatch(logout());
-    return <Redirect to='/' />;
+    return <Redirect to='/login' />;
   };
 
   const [collapseOpen, setCollapseOpen] = React.useState(false);
