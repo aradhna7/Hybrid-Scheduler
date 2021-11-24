@@ -88,17 +88,17 @@ The problem that arise here is how to manage which student should come on which 
 <br>
 
 ## Project Timeline
-![Landing Page](snapshots/timeline.png)
+![Project Timeline](snapshots/timeline.png)
 
 <br>
 
 ## High level Design
-![Landing Page](snapshots/HLD.png)
+![High level Design](snapshots/HLD.png)
 
 <br>
 
 ## Database Schema
-![Landing Page](snapshots/schema.png)
+![Database Schema](snapshots/schema.PNG)
 
 <br>
 
