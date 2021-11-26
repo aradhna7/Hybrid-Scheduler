@@ -17,6 +17,9 @@ The problem that arise here is how to manage which student should come on which 
 
 [![Generic badge](https://img.shields.io/badge/view-demo-blue?style=for-the-badge&label=View%20Demo%20Video)](https://www.youtube.com/watch?v=5ubSDh34lRg) 
 
+
+[PRESENTATION LINK](https://docs.google.com/presentation/d/1T79DC5V311PWEQXLqjN_nasch28XZVYsM6KRmHJwaKg/edit?usp=sharing) 
+
 <br>
 
 ## Tech Stack
